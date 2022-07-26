@@ -26,5 +26,8 @@ def alarm_factory(mgr, settings, max_attempts, api_key):
     elif kind == 'twitter':
         from PokeAlarm.Alarms.Twitter import TwitterAlarm
         return TwitterAlarm(mgr, settings)
+    elif kind == 'apprise':
+        from PokeAlarm.Alarms.Apprise import AppriseAlarm
+        return AppriseAlarm(mgr, settings, api_key)
     else:
         raise ValueError(f"{kind} is not a valid alarm type!")
